@@ -1,10 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="uk">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Сайт вчителя інформатики</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Сайт вчителя інформатики — Фінальна версія</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800&amp;family=Poppins:wght@600;700&amp;display=swap" rel="stylesheet"/>
 <style>
   :root{
     --bg:#0f1724;
@@ -91,95 +92,174 @@
   select, option { background:#0b1220; color:var(--white); }
 
   @media(max-width:900px){.grid-2,.grid-1-3{grid-template-columns:1fr}.logo svg{width:36px;height:36px}.profile-avatar{width:160px;height:160px}.form-row{grid-template-columns:1fr}.projects-inner{grid-template-columns:1fr}}
+
+
+/* === Світла тема === */
+.light-mode {
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --accent: #7c3aed;
+  --accent2: #06b6d4;
+  --muted: #333333;
+  --white: #0f1724;
+}
+
+/* Плавна анімація зміни теми */
+body, header, footer, .tile, nav a, .btn, .dropdown-content, section, .resources-tile {
+  transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+.light-mode body {
+  color: var(--white);
+  background: var(--bg);
+}
+
+.light-mode header {
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.light-mode nav a {
+  color: #333;
+}
+
+.light-mode nav a:hover, 
+.light-mode nav a.active {
+  background: linear-gradient(90deg, rgba(124,58,237,0.1), rgba(6,182,212,0.1));
+  color: #000;
+}
+
+.light-mode .tile {
+  background: rgba(0,0,0,0.03);
+  color: #000;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.light-mode .section-title,
+.light-mode h1,
+.light-mode h2,
+.light-mode h3 {
+  color: #111;
+}
+
+.light-mode .muted-list,
+.light-mode .small-note,
+.light-mode .text-block {
+  color: #333;
+}
+
+.light-mode footer {
+  background: rgba(255,255,255,0.9);
+  color: #444;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+#theme-toggle {
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.05);
+  color: var(--white);
+  transition: all 0.3s ease;
+}
+.light-mode #theme-toggle {
+  border: 1px solid rgba(0,0,0,0.1);
+  background: rgba(0,0,0,0.05);
+  color: #000;
+}
+#theme-toggle:hover {
+  background: rgba(255,255,255,0.15);
+}
+.light-mode .dropdown-content {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+}
+
+.light-mode .dropdown-content a {
+  color: #222;
+  background: transparent;
+}
+
+.light-mode .dropdown-content a:hover {
+  background: rgba(0,0,0,0.05);
+  color: #000;
+}
+
 </style>
 </head>
 <body>
-
 <canvas id="bg-anim"></canvas>
-
 <header>
-  <div class="container header-inner">
-    <div class="logo">
-      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#7c3aed"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs><rect x="6" y="10" width="52" height="36" rx="4" fill="url(#g1)"/><rect x="10" y="14" width="44" height="26" rx="2" fill="#0f1724"/><path d="M18 22h28M18 30h10" stroke="url(#g1)" stroke-width="2" stroke-linecap="round"/></svg>
-      <div style="font-weight:700">Сайт вчителя Інформатики</div>
-    </div>
-    <nav>
-      <a href="#home" data-nav>Головна</a>
-      <a href="#about" data-nav>Про вчителя</a>
-      <div class="dropdown" id="classDrop">
-        <a>Класи ▾</a>
-        <div class="dropdown-content">
-          <a href="#methodics" data-nav>Методичні матеріали</a>
-          <a href="#class5" data-nav>5 клас</a>
-          <a href="#class6" data-nav>6 клас</a>
-          <a href="#class7" data-nav>7 клас</a>
-          <a href="#class8" data-nav>8 клас</a>
-          <a href="#class9" data-nav>9 клас</a>
-          <a href="#class10" data-nav>10 клас</a>
-          <a href="#class11" data-nav>11 клас</a>
-        </div>
-      </div>
-      <a href="#students" data-nav>Для учнів</a>
-      <a href="#parents" data-nav>Для батьків</a>
-      <a href="#projects" data-nav>Проєкти</a>
-      <a href="#gallery" data-nav>Галерея</a>
-      <a href="#resources" data-nav>Ресурси</a>
-      <a href="#news" data-nav>Новини</a>
-      <a href="#contacts" data-nav>Контакти</a>
-    </nav>
-  </div>
+<div class="container header-inner">
+<div class="logo">
+<svg viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><defs><lineargradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#7c3aed"></stop><stop offset="1" stop-color="#06b6d4"></stop></lineargradient></defs><rect fill="url(#g1)" height="36" rx="4" width="52" x="6" y="10"></rect><rect fill="#0f1724" height="26" rx="2" width="44" x="10" y="14"></rect><path d="M18 22h28M18 30h10" stroke="url(#g1)" stroke-linecap="round" stroke-width="2"></path></svg>
+<div style="font-weight:700">Сайт вчителя Інформатики</div>
+</div>
+<nav>
+<a data-nav="" href="#home">Головна</a>
+<a data-nav="" href="#about">Про вчителя</a>
+<div class="dropdown" id="classDrop">
+<a>Класи ▾</a>
+<div class="dropdown-content">
+<a data-nav="" href="#methodics">Методичні матеріали</a>
+<a data-nav="" href="#class5">5 клас</a>
+<a data-nav="" href="#class6">6 клас</a>
+<a data-nav="" href="#class7">7 клас</a>
+<a data-nav="" href="#class8">8 клас</a>
+<a data-nav="" href="#class9">9 клас</a>
+<a data-nav="" href="#class10">10 клас</a>
+<a data-nav="" href="#class11">11 клас</a>
+</div>
+</div>
+<a data-nav="" href="#students">Для учнів</a>
+<a data-nav="" href="#parents">Для батьків</a>
+<a data-nav="" href="#projects">Проєкти</a>
+<a data-nav="" href="#gallery">Галерея</a>
+<a data-nav="" href="#resources">Ресурси</a>
+<a data-nav="" href="#news">Новини</a>
+<a data-nav="" href="#contacts">Контакти</a>
+</nav>
+<button class="btn btn-ghost" id="theme-toggle">🌓 Тема</button></div>
 </header>
-
 <main class="container">
-
-<section id="home" class="hero" data-section>
-  <h1 class="reveal">Ласкаво просимо!</h1>
-
-  <p class="reveal">
+<section class="hero" data-section="" id="home">
+<h1 class="reveal">Ласкаво просимо!</h1><div class="reveal" style="max-width: 900px; margin: 20px auto; background: rgba(255,255,255,0.02); padding: 14px 20px; border-radius: 10px;"><p class="reveal" style="text-align: justify; color: var(--muted); font-size: 16px; max-width: 900px; margin: 0 auto;">
     Цей сайт — освітня платформа, створена для учнів, батьків і колег-педагогів, які прагнуть розвивати свої знання в галузі інформатики. 
     Тут ви знайдете не просто навчальні матеріали, а цілу систему ресурсів, покликану зробити процес навчання сучасним, цікавим і доступним для кожного.
-  </p>
-
-  <div 
-    class="reveal" 
-    style="margin-top:18px; text-align:center; color:var(--muted); max-width:900px; margin-left:auto; margin-right:auto;"
-  >
-    <p class="text-block">
+  </p><p class="text-block" style="text-align: justify; color: var(--muted); font-size: 16px; max-width: 900px; margin: 0 auto;">
       Платформа об’єднує конспекти уроків із поясненнями теорії, відеоуроки та інтерактивні приклади, практичні й лабораторні роботи, 
       матеріали для підготовки до олімпіад і конкурсів, а також учнівські проєкти, що можуть надихнути на власні ідеї.
-    </p>
-    <p class="text-block">
+    </p><p class="text-block" style="text-align: justify; color: var(--muted); font-size: 16px; max-width: 900px; margin: 0 auto;">
       Основна мета сайту — зробити вивчення інформатики зрозумілим, практичним і натхненним процесом, який допомагає розкрити творчий потенціал кожного учня.
-    </p>
-    <p class="text-block">
+    </p><p class="text-block" style="text-align: justify; color: var(--muted); font-size: 16px; max-width: 900px; margin: 0 auto;">
       Для зручності всі матеріали систематизовано за класами, темами та видами діяльності. 
       Ви можете швидко знайти потрібну інформацію через меню навігації або скористатися пошуком у браузері (Ctrl + F).
-    </p>
-    <p class="text-block">
+    </p><p class="text-block" style="text-align: justify; color: var(--muted); font-size: 16px; max-width: 900px; margin: 0 auto;">
       Сайт постійно оновлюється — додаються нові уроки, приклади програм, навчальні відео та рекомендації. 
       Ми прагнемо, щоб кожен користувач знайшов тут щось корисне для себе: учень — знання й натхнення, учитель — готові ресурси для роботи, 
       а батьки — розуміння, як підтримати дитину в навчанні.
-    </p>
-  </div>
+    </p></div>
 
-  <div class="reveal cta-row" style="margin-top:12px; text-align:center;">
-    <a href="#methodics" class="btn btn-primary" data-nav>Матеріали</a>
-    <a href="#projects" class="btn btn-primary" data-nav>Проєкти</a>
-  </div>
+<div class="reveal" style="margin-top:18px; text-align:center; color:var(--muted); max-width:900px; margin-left:auto; margin-right:auto;">
+
+
+
+
+</div>
+<div class="reveal cta-row" style="margin-top:12px; text-align:center;">
+<a class="btn btn-primary" data-nav="" href="#methodics">Матеріали</a>
+<a class="btn btn-primary" data-nav="" href="#projects">Проєкти</a>
+</div>
 </section>
-
-<section id="about" data-section>
-  <h2 class="section-title reveal">Про вчителя</h2>
-
-  <div style="text-align:center;margin-bottom:18px;">
-    <img src="https://i.ibb.co/RkCSNX3K/unnamed.png" alt="Аватар вчителя" class="profile-avatar reveal" style="display:inline-block">
-  </div>
-
-  
-  <div style="display:flex;flex-direction:column;gap:12px;">
-      <div class="tile reveal">
-        <h3>Контактна інформація</h3>
-        <style>
+<section data-section="" id="about">
+<h2 class="section-title reveal">Про вчителя</h2>
+<div style="text-align:center;margin-bottom:18px;">
+<img alt="Аватар вчителя" class="profile-avatar reveal" src="https://i.ibb.co/RkCSNX3K/unnamed.png" style="display:inline-block"/>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;">
+<div class="tile reveal">
+<h3>Контактна інформація</h3>
+<style>
   .small-note {
     color: white;
     font-size: 14px;
@@ -201,14 +281,12 @@
     transition: color 0.3s;
   }
 </style>
-
 <p class="small-note">
   E-mail: 
   <span class="contact-link" onclick="copyToClipboard('kmetsanek@gmail.com', this)">
     kmetsanek@gmail.com
   </span>
 </p>
-
 <script>
   function copyToClipboard(text, element) {
     navigator.clipboard.writeText(text).then(() => {
@@ -222,429 +300,395 @@
     });
   }
 </script>
-
-        <p class="small-note">Телеграм: @by_Taoz345</p>
-      </div>
-      <div class="tile reveal">
-        <h3>Коротка біографія</h3>
-        <p class="text-block">Кметь Олександр Сергійович — учитель інформатики, працюю з учнями 5–11 класів.</p>
-      </div>
-      <div class="tile reveal">
-        <h3>Методи та інструменти</h3>
-        <ul class="muted-list">
-          <li>Комбінований формат: лекції + практика + проєкти;</li>
-          <li>Python, HTML/CSS/JS, Scratch, Arduino, GitHub;</li>
-          <li>Парні/групові проєкти, міні-хакатони.</li>
-        </ul>
-      </div>
-      <div class="tile reveal">
-        <h3>Досягнення</h3>
-        <ul class="muted-list">
-          <li>Керівник команд-переможців районних конкурсів;</li>
-          <li>Автор методичних матеріалів;</li>
-          <li>Організатор шкільних IT-заходів.</li>
-        </ul>
-      </div>
-      <div class="tile reveal">
-        <h3>Поради</h3>
-        <ul class="muted-list">
-          <li>30 хв щоденно краще за 3 години раз на тиждень;</li>
-          <li>Проєкти закріплюють знання;</li>
-          <li>Не бійтеся помилок — аналізуйте їх.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-
-<section id="methodics" data-section>
-  <h2 class="section-title reveal">Методичні матеріали</h2>
-  <div class="tile reveal">
-    <p>Тут зібрано модельні навчальні програми та календарні планування для кожного класу. Натисніть на потрібний вам матеріал, щоб відкрити його у форматі PDF.</p>
-  </div>
-  <div class="tile reveal">
-    <h3>5-6 класи:</h3>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
-      <a class="btn btn-primary" href="https://mon.gov.ua/static-objects/mon/sites/1/zagalna%20serednya/Navchalni.prohramy/2021/14.07/Model.navch.prohr.5-9.klas.NUSH-poetap.z.2022/Inform.osv.haluz.5-6-kl/Inform.5-6-kl.Ryvkind.ta.in.14.07.pdf" target="_blank">Модельна програма</a>
-      <a class="btn btn-primary" href="https://docs.google.com/document/d/13MVt1Nd-yRYN0lozWsTW1TySpKtpJPxXPubnhaLgl5g/edit?usp=sharing" target="_blank">Календарне планування</a>
-    </div>
-  </div>
-    </div>
-  <div class="tile reveal">
-    <h3>7-9 класи:</h3>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
-      <a class="btn btn-primary" href="https://mon.gov.ua/static-objects/mon/sites/1/zagalna%20serednya/Navchalni.prohramy/2023/Model.navch.prohr.5-9.klas/Inform.osv.haluz.2023/16.08.2023/Informatyka.7-9%20kl.Ryvkind.ta.in.16.08.2023.pdf" target="_blank">Модельна програма</a>
-      <a class="btn btn-primary" href="https://docs.google.com/document/d/1f3MHtynjfAxTjP6D9udufPD5kCyX_-XlptS9h4g4dW8/edit?usp=sharing" target="_blank">Календарне планування</a>
-    </div>
-  </div>
-    <div class="tile reveal">
-    <h3>10-11 класи</h3>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
-      <a class="btn btn-primary" href="https://mon.gov.ua/static-objects/mon/sites/1/zagalna%20serednya/programy-10-11-klas/inf-ak.pdf" target="_blank">Модельна програма</a>
-      <a class="btn btn-primary" href="https://docs.google.com/document/d/1s4SeDKNNG4z8OQDWsn8v_q-7jchVOYLW2Y3mOdvD9XE/edit?usp=sharing" target="_blank">Календарне планування</a>
-    </div>
-  </div>
-</section>
-
-
-<section id="class5" data-section>
-  <h2 class="section-title reveal">5 клас — Тема: Основи роботи з комп'ютером.</h2>
-  <div class="grid-2">
-    <div class="tile reveal">
-      <strong>Головний підручник (Завантажити)</strong>
-      <div class="download-line" style="margin-top:10px;">
-        <img src="https://i.ibb.co/S7R21WcW/qrcode-266434367-2596c4c136afbc3dbff54ba417ce61ef-1.png" alt="qrcode5class" border="0">
-        <div style="flex:1;">
-          <div style="font-weight:700;margin-bottom:6px">Підручник</div>
-          <a class="btn btn-primary" href="https://files.pidruchnyk.com.ua/uploads/book/5-klas-informatyka-ryvkind-2022.pdf" id="download-class5" target="_blank">Завантажити PDF</a>
-        </div>
-      </div>
-    </div>
-    <div class="tile reveal">
-      <strong>Головний підручник (Обладинка): </strong>
-	<img src="https://i.ibb.co/SD5b1yr9/1.jpg" alt="Підручник 5 клас" class="responsive">
-      <ul class="muted-list">
-      </ul>
-    </div>
-  </div>
-
-  <div class="tile reveal" style="margin-top:12px;">
-     <div class="tile reveal">
-      <strong>Інформація про теми та завдання:</strong>
-      <ul class="muted-list">
-        <li>Урок 1. Тема: Частини комп'ютера та їх призначення;</li>
-        <li>Урок 2. Основи безпечної роботи в інтернеті;</li>
-        <li>Практичне завдання. Створити просту презентацію на тему «Безпека в інтернеті»;</li>      
-	</ul>
-    </div>
-</section>
-
-<section id="class6" data-section>
-  <h2 class="section-title reveal">6 клас. Тема: Текстові редактори та презентації.</h2>
-  <div class="grid-2">
-    <div class="tile reveal">
-      <strong>Головний підручник (Завантажити)</strong>
-      <div class="download-line" style="margin-top:10px;">
-        <img src="https://i.ibb.co/vxZyWjKL/qrcode6class.png" alt="qrcode6class" border="0">
-        <div style="flex:1;">
-          <div style="font-weight:700;margin-bottom:6px">Підручник</div>
-          <a class="btn btn-primary" href="https://pidruchnyk.com.ua/2686-informatyka-6-klas-ryvkind-2023.html" id="download-class6" target="_blank">Завантажити PDF</a>
-        </div>
-      </div>
-    </div>
-    <div class="tile reveal">
-      <strong>Головний підручник (Обкладинка)</strong>
-      <img src="https://i.ibb.co/S7MrYxZk/6.jpg" alt="Підручник 6 клас" class="responsive">
-    </div>
-  </div>
-
-  <div class="tile reveal" style="margin-top:12px;">
-    <h3>Інформація про теми та завдання:</h3>
-    <ul class="muted-list">
-        <li>Урок 1. Практика роботи у текстовому редакторі (форматування, стилі);</li>
-        <li>Урок 2. Створення презентації — правила дизайну слайдів;</li>
-        <li>Проєкт. інструкція «Як написати корисний блог-пост».</li> 
-  </div>
-</section>
-
-<section id="class7" data-section>
-  <h2 class="section-title reveal">7 клас. Тема: Scratch — алгоритми та анімація.</h2>
-  <div class="grid-2">
-    <div class="tile reveal">
-      <strong>Головний підручник (Завантажити):</strong>
-      
-      <div class="download-line" style="margin-top:10px;">
-      <img src="https://i.ibb.co/xKwj6r7N/qrcode7class.png" alt="qrcode7class" border="0">
-          <div style="flex:1;">
-          <div style="font-weight:700;margin-bottom:6px">Підручник</div>
-          <a class="btn btn-primary" href="https://files.pidruchnyk.com.ua/uploads/book/7-klas-informatyka-ryvkind-2024.pdf" id="download-class7" target="_blank">Завантажити PDF</a>
-        </div>
-      </div>
-    </div>
-  <div class="tile reveal" style="margin-top:12px;">
-    <h3>Головний підручник (Обкладинка):</h3>
-	 <img src="https://i.ibb.co/8D48TBMx/i7.jpg" alt="Підручник 7 клас" class="responsive">
-    </div>
-  </div>
-
-<div class="tile reveal" style="margin-top:12px;">
-    <h3>Інформація про теми та завдання:</h3>
-    <ul class="muted-list">
-        <li>Урок 1. Вступ до Scratch. Створення перших алгоритмів;</li>
-        <li>Урок 2. Цикли, умови та взаємодія спрайтів;</li>
-        <li>Проєкт. Створення інтерактивної казки.Об’єднання руху, діалогів і подій у завершену історію. </li> 
-    </div>
-
-</section>
-
-<section id="class8" data-section>
-  <h2 class="section-title reveal">8 клас. Тема: Переходи до текстового програмування (Python).</h2>
-  <div class="grid-2">
-    <div class="tile reveal">
-      <strong>Головний підручник (Завантажити)</strong>
-      <img src="https://i.ibb.co/dsfXyrBh/qrcode8class.png" alt="qrcode8class" border="0">
-      <div class="download-line" style="margin-top:10px;">
-        <div style="flex:1;">
-          <div style="font-weight:700;margin-bottom:6px">Підручник</div>
-          <a class="btn btn-primary" href="https://files.pidruchnyk.com.ua/uploads/book/8-klas-informatyka-ryvkind-2025.pdf" id="download-class8" target="_blank">Завантажити PDF</a>
-        </div>
-      </div>
-    </div>
-    <div class="tile reveal">
-      <strong>Головний підручник (Обкладинка):</strong>
-      <img src="https://i.ibb.co/4nxDLwDm/i8.jpg" alt="Підручник 8 клас" class="responsive">
-    </div>
-  </div>
-
-<div class="tile reveal" style="margin-top:12px;">
-    <h3>Інформація про теми та завдання:</h3>
-    <ul class="muted-list">
-        <li>Урок 1. Змінні, типи даних, введення/виведення;</li>
-        <li>Урок 2. Умовні оператори та цикли;</li>
-        <li>Практика. Задачі на цикли та рядки. Розробити задачі з циклами </li> 
-    </div>
-
-</section>
-
-
-<section id="class9" data-section>
-  <h2 class="section-title reveal">9 клас. Тема: Введення в Web та алгоритми.</h2>
-  <div class="grid-2">
-    <div class="tile reveal">
-      <strong>Головний підручник (Завантажити)</strong>
-      <div class="download-line" style="margin-top:10px;">
-        <img src="https://i.ibb.co/bgm7vvNQ/qrcode9class.png" alt="qrcode9class" border="0">
-        <div style="flex:1;">
-          <div style="font-weight:700;margin-bottom:6px">Підручник</div>
-          <a class="btn btn-primary" href="https://www.geneza.ua/sites/default/files/ebooks/%D0%A0%D0%B8%D0%B2%D0%BA%D1%96%D0%BD%D0%B4_%D0%86%D0%BD%D1%84%D0%BE_%D0%9F_9.%D1%83%D0%BA%D1%80_%28115-21%29_V.pdf" id="download-class9" target="_blank">Завантажити PDF</a>
-        </div>
-      </div>
-    </div>
-    <div class="tile reveal">
-      <strong>Головний підручник (Обкладинка):</strong>
-      <img src="https://i.ibb.co/QjbhfTys/i9.jpg" alt="Підручник 9 клас" class="responsive">
-    </div>
-  </div>
-
- <div class="tile reveal" style="margin-top:12px;">
-    <h3>Інформація про теми та завдання:</h3>
-    <ul class="muted-list">
-        <li>Урок 1. HTML/CSS — структура та стилі сторінки;</li>
-        <li>Урок 2. Основи JavaScript — взаємодія з DOM;</li>
-        <li>Урок 3. Алгоритми: сортування, пошук, складність алгоритмів.</li> 
-    </div>
-</section>
-
-<section id="class10" data-section>
-  <h2 class="section-title reveal">10 клас. Тема: Поглиблене програмування та Бази даних.</h2>
-  <div class="grid-2">
-    <div class="tile reveal">
-      <strong>Головний підручник (Завантажити):</strong>
-      <div class="download-line" style="margin-top:10px;">
-        <img src="https://i.ibb.co/Xk8MhG2F/qrcode10class.png" alt="qrcode10class" border="0">
-        <div style="flex:1;">
-          <div style="font-weight:700;margin-bottom:6px">Підручник</div>
-          <a class="btn btn-primary" href="https://issuu.com/kreidaros/docs/informatika-10-klas-ryvkind-2018" id="download-class10" target="_blank">Завантажити PDF</a>
-        </div>
-      </div>
-    </div>
-    <div class="tile reveal">
-      <strong>Головний підручник (Обкладинка):</strong>
-      <img src="https://i.ibb.co/YTP10Zkx/i10.jpg" alt="Підручник 10 клас" class="responsive">
-    </div>
-  </div>
-
-  <div class="tile reveal" style="margin-top:12px;">
-    <h3>Інформація про теми та завдання:</h3>
-    <ul class="muted-list">
-        <li>Урок 1. HTML/CSS — структура та стилі сторінки;</li>
-        <li>Урок 2. Основи JavaScript — взаємодія з DOM;</li>
-        <li>Урок 3. Алгоритми: сортування, пошук, складність алгоритмів.</li> 
-    </div>
-</section>
-
-<section id="class11" data-section>
-  <h2 class="section-title reveal">11 клас. Тема: Підготовка до ЗНО та профільні теми.</h2>
-  <div class="grid-2">
-    <div class="tile reveal">
-      <strong>Головний підручник (Завантажити):</strong>
-	<a href='https://me-qr.com' border='0' style='cursor:pointer;display:block'><img src='https://storage2.me-qr.com/qr/266596889.png?v=1761293275' alt='Create qr code for free'></a><a href='https://me-qr.com' border='0' style='cursor:default;display:none'>Create qr code for free</a>
-      <div class="download-line" style="margin-top:10px;">
-          <div style="flex:1;">
-          <div style="font-weight:700;margin-bottom:6px">Підручник</div>
-          <a class="btn btn-primary" href="https://files.pidruchnyk.com.ua/uploads/book/Informatyka_standart_11klas_Ryvkind.pdf" id="download-class11" target="_blank">Завантажити PDF</a>
-        </div>
-      </div>
-    </div>
-    <div class="tile reveal">
-      <strong>Головний підручник (Обкладинка):</strong>
-            <img src="https://i.ibb.co/3y3QqHT6/i11.jpg" alt="Підручник 11 клас" class="responsive">
-    </div>
-  </div>
-
-  <div class="tile reveal" style="margin-top:12px;">
-    <h3>Інформація про теми та завдання:</h3>
-    <ul class="muted-list">
-        <li>Урок 1. Підготовка до тестів, розбір типових завдань;</li>
-        <li>Урок 2. Поглиблені теми з алгоритмів та структури даних;</li>
-        <li>Урок 3. Індивідуальні консультації та проєктні роботи.</li> 
-    </div>
-</section>
-
-<section id="students" data-section>
-  <h2 class="section-title reveal">Для учнів</h2>
-  <div class="tile reveal">
-    <strong>Домашні завдання / Тести / Самоперевірка</strong>
-    <p class="muted-list">Поточні домашні завдання, інтерактивні тести та поради щодо підготовки.</p>
-  </div>
-
-  <div class="grid-2" style="margin-top:12px;">
-    <div class="tile reveal">
-      <h3>Як готуватися до уроків</h3>
-      <ul class="muted-list">
-        <li>30 хв щоденно: повтор + практика;</li>
-        <li>Ведіть журнал помилок і рішень;</li>
-        <li>Перед контрольними — короткі міні-тести.</li>
-      </ul>
-    </div>
-    <div class="tile reveal">
-      <h3>Інтерактивні ресурси</h3>
-      <ul class="muted-list">
-        <li><a href="https://learningapps.org" target="_blank">LearningApps</a></li>
-        <li><a href="https://forms.google.com" target="_blank">Google Forms</a></li>
-        <li><a href="https://www.khanacademy.org" target="_blank">Khan Academy</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="tile reveal" style="margin-top:12px;">
-    <h3>Приклади робіт</h3>
-    <p class="small-note">Посилання на приклади презентацій, коду та короткі звіти.</p>
-  </div>
-
-  <div class="tile reveal" style="margin-top:12px;">
-    <h3>Форма для учнів</h3>
-    <form id="studentQuickForm">
-      <div class="form-row">
-        <input type="text" name="name" placeholder="Ім'я" required>
-        <input type="email" name="email" placeholder="E-mail" required>
-      </div>
-      <div style="margin-top:8px;">
-        <select name="class" required>
-          <option value="">Клас</option>
-          <option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option>
-        </select>
-      </div>
-      <div style="margin-top:8px;">
-        <textarea name="message" placeholder="Коротке повідомлення / питання" required></textarea>
-      </div>
-      <div style="margin-top:10px; display:flex; gap:10px; align-items:center;">
-        <button class="btn btn-primary" type="submit">Відправити</button>
-      </div>
-    </form>
-  </div>
-</section>
-
-<section id="parents" data-section>
-  <h2 class="section-title reveal">Для батьків</h2>
-  <div class="tile reveal">
-    <h3>Роль батьків</h3>
-    <p class="muted-list">Батьки відіграють ключову роль у формуванні навчальної мотивації та самостійності дитини. Підтримка з боку родини не лише полегшує засвоєння знань, а й допомагає дитині розвивати відповідальність, організованість і впевненість у власних силах. Важливо створити вдома атмосферу, у якій навчання сприйматиметься як природна й цікава частина життя.</p>
-  </div>
+<p class="small-note">Телеграм: @by_Taoz345</p>
+</div>
 <div class="tile reveal">
-  <h3>Практичні поради</h3>
-  <ul class="muted-list">
-    <li><strong>Організація простору.</strong> Забезпечте дитині зручне, добре освітлене робоче місце, де вона зможе зосереджуватися без зайвих відволікань.</li>
-    <li><strong>Планування часу.</strong> Допоможіть скласти збалансований розклад, у якому буде місце для навчання, відпочинку та дозвілля. Це розвиває навички тайм-менеджменту й знижує стрес.</li>
-    <li><strong>Спільний перегляд робіт.</strong> Переглядаючи завдання чи проєкти разом із дитиною, ви демонструєте зацікавленість у її досягненнях. Така увага мотивує, сприяє відкритому діалогу та допомагає дитині усвідомити власний прогрес.</li>
-    <li><strong>Баланс між екраном і реальністю.</strong> У сучасних умовах цифрового навчання важливо підтримувати здоровий баланс між часом за гаджетами та активним відпочинком — прогулянками, спортом, творчістю. Це сприяє розвитку уваги та збереженню психоемоційного здоров’я.</li>
-    <li><strong>Взаємодія з учителем.</strong> Не соромтеся звертатися до вчителя з питаннями чи пропозиціями. Спільна комунікація допомагає своєчасно виявити труднощі та знайти оптимальні шляхи підтримки дитини. Контактні дані знаходяться у розділі «Контакти».</li>
-  </ul>
+<h3>Коротка біографія</h3>
+<p class="text-block">Кметь Олександр Сергійович — учитель інформатики, працюю з учнями 5–11 класів.</p>
+</div>
+<div class="tile reveal">
+<h3>Методи та інструменти</h3>
+<ul class="muted-list">
+<li>Комбінований формат: лекції + практика + проєкти;</li>
+<li>Python, HTML/CSS/JS, Scratch, Arduino, GitHub;</li>
+<li>Парні/групові проєкти, міні-хакатони.</li>
+</ul>
+</div>
+<div class="tile reveal">
+<h3>Досягнення</h3>
+<ul class="muted-list">
+<li>Керівник команд-переможців районних конкурсів;</li>
+<li>Автор методичних матеріалів;</li>
+<li>Організатор шкільних IT-заходів.</li>
+</ul>
+</div>
+<div class="tile reveal">
+<h3>Поради</h3>
+<ul class="muted-list">
+<li>30 хв щоденно краще за 3 години раз на тиждень;</li>
+<li>Проєкти закріплюють знання;</li>
+<li>Не бійтеся помилок — аналізуйте їх.</li>
+</ul>
+</div>
+</div>
+</section>
+<section data-section="" id="methodics">
+<h2 class="section-title reveal">Методичні матеріали</h2>
+<div class="tile reveal">
+<p>Тут зібрано модельні навчальні програми та календарні планування для кожного класу. Натисніть на потрібний вам матеріал, щоб відкрити його у форматі PDF.</p>
+</div>
+<div class="tile reveal">
+<h3>5-6 класи:</h3>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
+<a class="btn btn-primary" href="https://mon.gov.ua/static-objects/mon/sites/1/zagalna%20serednya/Navchalni.prohramy/2021/14.07/Model.navch.prohr.5-9.klas.NUSH-poetap.z.2022/Inform.osv.haluz.5-6-kl/Inform.5-6-kl.Ryvkind.ta.in.14.07.pdf" target="_blank">Модельна програма</a>
+<a class="btn btn-primary" href="https://docs.google.com/document/d/13MVt1Nd-yRYN0lozWsTW1TySpKtpJPxXPubnhaLgl5g/edit?usp=sharing" target="_blank">Календарне планування</a>
+</div>
 </div>
 
-  </div>
-  <div class="tile reveal">
-    <h3>Ресурси для батьків</h3>
-    <ul class="muted-list">
-      <li><a href="https://www.commonsensemedia.org" target="_blank">Common Sense Media</a> — поради щодо цифрової грамотності для сімей</li>
-      <li><a href="https://www.family-online-safety.eu" target="_blank">Family Online Safety</a></li>
-      <li><a href="https://teachertoolkit.co.uk" target="_blank">Teacher Toolkit</a></li>
-    </ul>
-  </div>
+<div class="tile reveal">
+<h3>7-9 класи:</h3>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
+<a class="btn btn-primary" href="https://mon.gov.ua/static-objects/mon/sites/1/zagalna%20serednya/Navchalni.prohramy/2023/Model.navch.prohr.5-9.klas/Inform.osv.haluz.2023/16.08.2023/Informatyka.7-9%20kl.Ryvkind.ta.in.16.08.2023.pdf" target="_blank">Модельна програма</a>
+<a class="btn btn-primary" href="https://docs.google.com/document/d/1f3MHtynjfAxTjP6D9udufPD5kCyX_-XlptS9h4g4dW8/edit?usp=sharing" target="_blank">Календарне планування</a>
+</div>
+</div>
+<div class="tile reveal">
+<h3>10-11 класи</h3>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
+<a class="btn btn-primary" href="https://mon.gov.ua/static-objects/mon/sites/1/zagalna%20serednya/programy-10-11-klas/inf-ak.pdf" target="_blank">Модельна програма</a>
+<a class="btn btn-primary" href="https://docs.google.com/document/d/1s4SeDKNNG4z8OQDWsn8v_q-7jchVOYLW2Y3mOdvD9XE/edit?usp=sharing" target="_blank">Календарне планування</a>
+</div>
+</div>
 </section>
-
-<section id="projects" class="projects-full" data-section>
-  <div class="projects-inner">
-    <div class="left">
-      <h2 class="section-title reveal" style="color:#fff">Проєкти та практична робота</h2>
-      <div class="tile reveal" style="background:rgba(255,255,255,0.02)">
-        <h3>Великі практичні проєкти</h3>
-        <ul class="muted-list">
-          <li>Розумний дім (Arduino) — сенсори та автоматизація;</li>
-          <li>Веб-проєкти — форми, БД, фронтенд;</li>
-          <li>Навчальний чат-бот — практичний кейс зі збереженням даних.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="right">
-      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Projects showcase" style="width:100%;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.45)">
-    </div>
-  </div>
+<section data-section="" id="class5">
+<h2 class="section-title reveal">5 клас — Тема: Основи роботи з комп'ютером.</h2>
+<div class="grid-2">
+<div class="tile reveal">
+<strong>Головний підручник (Завантажити)</strong>
+<div class="download-line" style="margin-top:10px;">
+<img alt="qrcode5class" border="0" src="https://i.ibb.co/S7R21WcW/qrcode-266434367-2596c4c136afbc3dbff54ba417ce61ef-1.png"/>
+<div style="flex:1;">
+<div style="font-weight:700;margin-bottom:6px">Підручник</div>
+<a class="btn btn-primary" href="https://files.pidruchnyk.com.ua/uploads/book/5-klas-informatyka-ryvkind-2022.pdf" id="download-class5" target="_blank">Завантажити PDF</a>
+</div>
+</div>
+</div>
+<div class="tile reveal">
+<strong>Головний підручник (Обладинка): </strong>
+<img alt="Підручник 5 клас" class="responsive" src="https://i.ibb.co/SD5b1yr9/1.jpg"/>
+<ul class="muted-list">
+</ul>
+</div>
+</div>
+<div class="tile reveal" style="margin-top:12px;">
+<div class="tile reveal">
+<strong>Інформація про теми та завдання:</strong>
+<ul class="muted-list">
+<li>Урок 1. Тема: Частини комп'ютера та їх призначення;</li>
+<li>Урок 2. Основи безпечної роботи в інтернеті;</li>
+<li>Практичне завдання. Створити просту презентацію на тему «Безпека в інтернеті»;</li>
+</ul>
+</div>
+</div></section>
+<section data-section="" id="class6">
+<h2 class="section-title reveal">6 клас. Тема: Текстові редактори та презентації.</h2>
+<div class="grid-2">
+<div class="tile reveal">
+<strong>Головний підручник (Завантажити)</strong>
+<div class="download-line" style="margin-top:10px;">
+<img alt="qrcode6class" border="0" src="https://i.ibb.co/vxZyWjKL/qrcode6class.png"/>
+<div style="flex:1;">
+<div style="font-weight:700;margin-bottom:6px">Підручник</div>
+<a class="btn btn-primary" href="https://pidruchnyk.com.ua/2686-informatyka-6-klas-ryvkind-2023.html" id="download-class6" target="_blank">Завантажити PDF</a>
+</div>
+</div>
+</div>
+<div class="tile reveal">
+<strong>Головний підручник (Обкладинка)</strong>
+<img alt="Підручник 6 клас" class="responsive" src="https://i.ibb.co/S7MrYxZk/6.jpg"/>
+</div>
+</div>
+<div class="tile reveal" style="margin-top:12px;">
+<h3>Інформація про теми та завдання:</h3>
+<ul class="muted-list">
+<li>Урок 1. Практика роботи у текстовому редакторі (форматування, стилі);</li>
+<li>Урок 2. Створення презентації — правила дизайну слайдів;</li>
+<li>Проєкт. інструкція «Як написати корисний блог-пост».</li>
+</ul></div>
 </section>
-
-<section id="gallery" data-section>
-  <h2 class="section-title reveal">Галерея</h2>
-  <div class="grid-3">
-    <div class="tile reveal">
-      <img src="https://i.ibb.co/j93t6pYc/image.jpg" alt="Фото з уроку інформатики." class="responsive">
-      <p class="small-note">Фото з уроку інформатики.</p>
-    </div>
-    <div class="tile reveal">
-      <img src="https://i.ibb.co/HTt0KsVr/image.jpg" alt="Учнівський проєкт" class="responsive">
-      <p class="small-note">Учнівський проєкт — робота за комп'ютером.</p>
-    </div>
-    <div class="tile reveal">
-      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop" alt="Виставки та презентації робіт." class="responsive">
-      <p class="small-note">Виставки та презентації робіт.</p>
-    </div>
-  </div>
+<section data-section="" id="class7">
+<h2 class="section-title reveal">7 клас. Тема: Scratch — алгоритми та анімація.</h2>
+<div class="grid-2">
+<div class="tile reveal">
+<strong>Головний підручник (Завантажити):</strong>
+<div class="download-line" style="margin-top:10px;">
+<img alt="qrcode7class" border="0" src="https://i.ibb.co/xKwj6r7N/qrcode7class.png"/>
+<div style="flex:1;">
+<div style="font-weight:700;margin-bottom:6px">Підручник</div>
+<a class="btn btn-primary" href="https://files.pidruchnyk.com.ua/uploads/book/7-klas-informatyka-ryvkind-2024.pdf" id="download-class7" target="_blank">Завантажити PDF</a>
+</div>
+</div>
+</div>
+<div class="tile reveal" style="margin-top:12px;">
+<h3>Головний підручник (Обкладинка):</h3>
+<img alt="Підручник 7 клас" class="responsive" src="https://i.ibb.co/8D48TBMx/i7.jpg"/>
+</div>
+</div>
+<div class="tile reveal" style="margin-top:12px;">
+<h3>Інформація про теми та завдання:</h3>
+<ul class="muted-list">
+<li>Урок 1. Вступ до Scratch. Створення перших алгоритмів;</li>
+<li>Урок 2. Цикли, умови та взаємодія спрайтів;</li>
+<li>Проєкт. Створення інтерактивної казки.Об’єднання руху, діалогів і подій у завершену історію. </li>
+</ul></div>
 </section>
-
-<section id="resources" data-section>
-  <h2 class="section-title reveal">Корисні ресурси</h2>
-  <div class="resources-tile reveal">
-    <p class="small-note">Список корисних сайтів і короткий коментар, як їх використовувати у навчанні.</p>
-    <ul class="muted-list" style="margin-top:8px">
-      <li><a href="https://www.khanacademy.org" target="_blank">Khan Academy</a> — фундаментальні поняття з інформатики та математики.</li>
-      <li><a href="https://www.w3schools.com" target="_blank">W3Schools</a> — швидкі приклади по HTML/CSS/JS.</li>
-      <li><a href="https://www.codecademy.com" target="_blank">Codecademy</a> — інтерактивні курси з програмування.</li>
-      <li><a href="https://scratch.mit.edu" target="_blank">Scratch</a> — візуальне програмування для молодших класів.</li>
-      <li><a href="https://learningapps.org" target="_blank">LearningApps</a> — створення інтерактивних вправ.</li>
-      <li><a href="https://classroom.google.com" target="_blank">Google Classroom</a> — організація класу та роздача завдань.</li>
-      <li><a href="https://edu.google.com" target="_blank">Google for Education</a> — ресурси для вчителів.</li>
-      <li><a href="https://www.freecodecamp.org" target="_blank">freeCodeCamp</a> — практичні задачі та сертифікації.</li>
-      <li><a href="https://www.kodable.com" target="_blank">Kodable</a> — початкове програмування для дітей.</li>
-      <li><a href="https://www.geogebra.org" target="_blank">GeoGebra</a> — математика для візуалізації задач.</li>
-      <li><a href="https://github.com" target="_blank">GitHub</a> — зберігання коду та спільна робота.</li>
-      <li><a href="https://www.coursera.org" target="_blank">Coursera</a> — курси від університетів.</li>
-      <li><a href="https://www.edx.org" target="_blank">edX</a> — онлайн-курси та мікромастери.</li>
-      <li><a href="https://www.tinkercad.com" target="_blank">Tinkercad</a> — прості 3D/електронні симуляції для проєктів.</li>
-      <li><a href="https://www.canva.com" target="_blank">Canva</a> — дизайн презентацій та матеріалів.</li>
-    </ul> 
-    <p class="small-note" style="margin-top:8px">Порада: використовуйте LearningApps та Google Forms для коротких самоперевірок на уроках.</p>
-  </div>
+<section data-section="" id="class8">
+<h2 class="section-title reveal">8 клас. Тема: Переходи до текстового програмування (Python).</h2>
+<div class="grid-2">
+<div class="tile reveal">
+<strong>Головний підручник (Завантажити)</strong>
+<img alt="qrcode8class" border="0" src="https://i.ibb.co/dsfXyrBh/qrcode8class.png"/>
+<div class="download-line" style="margin-top:10px;">
+<div style="flex:1;">
+<div style="font-weight:700;margin-bottom:6px">Підручник</div>
+<a class="btn btn-primary" href="https://files.pidruchnyk.com.ua/uploads/book/8-klas-informatyka-ryvkind-2025.pdf" id="download-class8" target="_blank">Завантажити PDF</a>
+</div>
+</div>
+</div>
+<div class="tile reveal">
+<strong>Головний підручник (Обкладинка):</strong>
+<img alt="Підручник 8 клас" class="responsive" src="https://i.ibb.co/4nxDLwDm/i8.jpg"/>
+</div>
+</div>
+<div class="tile reveal" style="margin-top:12px;">
+<h3>Інформація про теми та завдання:</h3>
+<ul class="muted-list">
+<li>Урок 1. Змінні, типи даних, введення/виведення;</li>
+<li>Урок 2. Умовні оператори та цикли;</li>
+<li>Практика. Задачі на цикли та рядки. Розробити задачі з циклами </li>
+</ul></div>
 </section>
-
-<section id="news" data-section>
-  <h2 class="section-title reveal">Новини</h2>
-  <div class="tile reveal">📅 <strong>2025-10-25</strong> — Контрольна з алгоритмів у 9-Б класі (тема: сортування).</div>
-  <div class="tile reveal">📣 Початок підготовки до Всеукраїнської олімпіади — тренування по середах о 15:30.</div>
+<section data-section="" id="class9">
+<h2 class="section-title reveal">9 клас. Тема: Введення в Web та алгоритми.</h2>
+<div class="grid-2">
+<div class="tile reveal">
+<strong>Головний підручник (Завантажити)</strong>
+<div class="download-line" style="margin-top:10px;">
+<img alt="qrcode9class" border="0" src="https://i.ibb.co/bgm7vvNQ/qrcode9class.png"/>
+<div style="flex:1;">
+<div style="font-weight:700;margin-bottom:6px">Підручник</div>
+<a class="btn btn-primary" href="https://www.geneza.ua/sites/default/files/ebooks/%D0%A0%D0%B8%D0%B2%D0%BA%D1%96%D0%BD%D0%B4_%D0%86%D0%BD%D1%84%D0%BE_%D0%9F_9.%D1%83%D0%BA%D1%80_%28115-21%29_V.pdf" id="download-class9" target="_blank">Завантажити PDF</a>
+</div>
+</div>
+</div>
+<div class="tile reveal">
+<strong>Головний підручник (Обкладинка):</strong>
+<img alt="Підручник 9 клас" class="responsive" src="https://i.ibb.co/QjbhfTys/i9.jpg"/>
+</div>
+</div>
+<div class="tile reveal" style="margin-top:12px;">
+<h3>Інформація про теми та завдання:</h3>
+<ul class="muted-list">
+<li>Урок 1. HTML/CSS — структура та стилі сторінки;</li>
+<li>Урок 2. Основи JavaScript — взаємодія з DOM;</li>
+<li>Урок 3. Алгоритми: сортування, пошук, складність алгоритмів.</li>
+</ul></div>
 </section>
+<section data-section="" id="class10">
+<h2 class="section-title reveal">10 клас. Тема: Поглиблене програмування та Бази даних.</h2>
+<div class="grid-2">
+<div class="tile reveal">
+<strong>Головний підручник (Завантажити):</strong>
+<div class="download-line" style="margin-top:10px;">
+<img alt="qrcode10class" border="0" src="https://i.ibb.co/Xk8MhG2F/qrcode10class.png"/>
+<div style="flex:1;">
+<div style="font-weight:700;margin-bottom:6px">Підручник</div>
+<a class="btn btn-primary" href="https://issuu.com/kreidaros/docs/informatika-10-klas-ryvkind-2018" id="download-class10" target="_blank">Завантажити PDF</a>
+</div>
+</div>
+</div>
+<div class="tile reveal">
+<strong>Головний підручник (Обкладинка):</strong>
+<img alt="Підручник 10 клас" class="responsive" src="https://i.ibb.co/YTP10Zkx/i10.jpg"/>
+</div>
+</div>
+<div class="tile reveal" style="margin-top:12px;">
+<h3>Інформація про теми та завдання:</h3>
+<ul class="muted-list">
+<li>Урок 1. HTML/CSS — структура та стилі сторінки;</li>
+<li>Урок 2. Основи JavaScript — взаємодія з DOM;</li>
+<li>Урок 3. Алгоритми: сортування, пошук, складність алгоритмів.</li>
+</ul></div>
+</section>
+<section data-section="" id="class11">
+<h2 class="section-title reveal">11 клас. Тема: Підготовка до ЗНО та профільні теми.</h2>
+<div class="grid-2">
+<div class="tile reveal">
+<strong>Головний підручник (Завантажити):</strong>
+<a border="0" href="https://me-qr.com" style="cursor:pointer;display:block"><img alt="Create qr code for free" src="https://storage2.me-qr.com/qr/266596889.png?v=1761293275"/></a><a border="0" href="https://me-qr.com" style="cursor:default;display:none">Create qr code for free</a>
+<div class="download-line" style="margin-top:10px;">
+<div style="flex:1;">
+<div style="font-weight:700;margin-bottom:6px">Підручник</div>
+<a class="btn btn-primary" href="https://files.pidruchnyk.com.ua/uploads/book/Informatyka_standart_11klas_Ryvkind.pdf" id="download-class11" target="_blank">Завантажити PDF</a>
+</div>
+</div>
+</div>
+<div class="tile reveal">
+<strong>Головний підручник (Обкладинка):</strong>
+<img alt="Підручник 11 клас" class="responsive" src="https://i.ibb.co/3y3QqHT6/i11.jpg"/>
+</div>
+</div>
+<div class="tile reveal" style="margin-top:12px;">
+<h3>Інформація про теми та завдання:</h3>
+<ul class="muted-list">
+<li>Урок 1. Підготовка до тестів, розбір типових завдань;</li>
+<li>Урок 2. Поглиблені теми з алгоритмів та структури даних;</li>
+<li>Урок 3. Індивідуальні консультації та проєктні роботи.</li>
+</ul></div>
+</section>
+<section data-section="" id="students">
+<h2 class="section-title reveal">Для учнів</h2>
+<div class="tile reveal">
+<strong>Домашні завдання / Тести / Самоперевірка</strong>
+<p class="muted-list">Поточні домашні завдання, інтерактивні тести та поради щодо підготовки.</p>
+</div>
+<div class="grid-2" style="margin-top:12px;">
+<div class="tile reveal">
+<h3>Як готуватися до уроків</h3>
+<ul class="muted-list">
+<li>30 хв щоденно: повтор + практика;</li>
+<li>Ведіть журнал помилок і рішень;</li>
+<li>Перед контрольними — короткі міні-тести.</li>
+</ul>
+</div>
+<div class="tile reveal">
+<h3>Інтерактивні ресурси</h3>
+<ul class="muted-list">
+<li><a href="https://learningapps.org" target="_blank">LearningApps</a></li>
+<li><a href="https://forms.google.com" target="_blank">Google Forms</a></li>
+<li><a href="https://www.khanacademy.org" target="_blank">Khan Academy</a></li>
+</ul>
+</div>
+</div>
+<div class="tile reveal" style="margin-top:12px;">
+<h3>Приклади робіт</h3>
+<p class="small-note">Посилання на приклади презентацій, коду та короткі звіти.</p>
+</div>
+<div class="tile reveal" style="margin-top:12px;">
+<h3>Форма для учнів</h3>
+<form id="studentQuickForm">
+<div class="form-row">
+<input name="name" placeholder="Ім'я" required="" type="text"/>
+<input name="email" placeholder="E-mail" required="" type="email"/>
+</div>
+<div style="margin-top:8px;">
+<select name="class" required="">
+<option value="">Клас</option>
+<option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option>
+</select>
+</div>
+<div style="margin-top:8px;">
+<textarea name="message" placeholder="Коротке повідомлення / питання" required=""></textarea>
+</div>
+<div style="margin-top:10px; display:flex; gap:10px; align-items:center;">
+<button class="btn btn-primary" type="submit">Відправити</button>
+</div>
+</form>
+</div>
+</section>
+<section data-section="" id="parents">
+<h2 class="section-title reveal">Для батьків</h2>
+<div class="tile reveal">
+<h3>Роль батьків</h3>
+<p class="muted-list">Батьки відіграють ключову роль у формуванні навчальної мотивації та самостійності дитини. Підтримка з боку родини не лише полегшує засвоєння знань, а й допомагає дитині розвивати відповідальність, організованість і впевненість у власних силах. Важливо створити вдома атмосферу, у якій навчання сприйматиметься як природна й цікава частина життя.</p>
+</div>
+<div class="tile reveal">
+<h3>Практичні поради</h3>
+<ul class="muted-list">
+<li><strong>Організація простору.</strong> Забезпечте дитині зручне, добре освітлене робоче місце, де вона зможе зосереджуватися без зайвих відволікань.</li>
+<li><strong>Планування часу.</strong> Допоможіть скласти збалансований розклад, у якому буде місце для навчання, відпочинку та дозвілля. Це розвиває навички тайм-менеджменту й знижує стрес.</li>
+<li><strong>Спільний перегляд робіт.</strong> Переглядаючи завдання чи проєкти разом із дитиною, ви демонструєте зацікавленість у її досягненнях. Така увага мотивує, сприяє відкритому діалогу та допомагає дитині усвідомити власний прогрес.</li>
+<li><strong>Баланс між екраном і реальністю.</strong> У сучасних умовах цифрового навчання важливо підтримувати здоровий баланс між часом за гаджетами та активним відпочинком — прогулянками, спортом, творчістю. Це сприяє розвитку уваги та збереженню психоемоційного здоров’я.</li>
+<li><strong>Взаємодія з учителем.</strong> Не соромтеся звертатися до вчителя з питаннями чи пропозиціями. Спільна комунікація допомагає своєчасно виявити труднощі та знайти оптимальні шляхи підтримки дитини. Контактні дані знаходяться у розділі «Контакти».</li>
+</ul>
+</div>
 
-<section id="contacts" data-section>
-  <h2 class="section-title reveal">Контакти</h2>
-  <div class="tile reveal">
-
+<div class="tile reveal">
+<h3>Ресурси для батьків</h3>
+<ul class="muted-list">
+<li><a href="https://www.commonsensemedia.org" target="_blank">Common Sense Media</a> — поради щодо цифрової грамотності для сімей</li>
+<li><a href="https://www.family-online-safety.eu" target="_blank">Family Online Safety</a></li>
+<li><a href="https://teachertoolkit.co.uk" target="_blank">Teacher Toolkit</a></li>
+</ul>
+</div>
+</section>
+<section class="projects-full" data-section="" id="projects">
+<div class="projects-inner">
+<div class="left">
+<h2 class="section-title reveal" style="color:#fff">Проєкти та практична робота</h2>
+<div class="tile reveal" style="background:rgba(255,255,255,0.02)">
+<h3>Великі практичні проєкти</h3>
+<ul class="muted-list">
+<li>Розумний дім (Arduino) — сенсори та автоматизація;</li>
+<li>Веб-проєкти — форми, БД, фронтенд;</li>
+<li>Навчальний чат-бот — практичний кейс зі збереженням даних.</li>
+</ul>
+</div>
+</div>
+<div class="right">
+<img alt="Projects showcase" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&amp;w=1400&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;s=placeholder" style="width:100%;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.45)"/>
+</div>
+</div>
+</section>
+<section data-section="" id="gallery">
+<h2 class="section-title reveal">Галерея</h2>
+<div class="grid-3">
+<div class="tile reveal">
+<img alt="Фото з уроку інформатики." class="responsive" src="https://i.ibb.co/j93t6pYc/image.jpg"/>
+<p class="small-note">Фото з уроку інформатики.</p>
+</div>
+<div class="tile reveal">
+<img alt="Учнівський проєкт" class="responsive" src="https://i.ibb.co/HTt0KsVr/image.jpg"/>
+<p class="small-note">Учнівський проєкт — робота за комп'ютером.</p>
+</div>
+<div class="tile reveal">
+<img alt="Виставки та презентації робіт." class="responsive" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/>
+<p class="small-note">Виставки та презентації робіт.</p>
+</div>
+</div>
+</section>
+<section data-section="" id="resources">
+<h2 class="section-title reveal">Корисні ресурси</h2>
+<div class="resources-tile reveal">
+<p class="small-note">Список корисних сайтів і короткий коментар, як їх використовувати у навчанні.</p>
+<ul class="muted-list" style="margin-top:8px">
+<li><a href="https://www.khanacademy.org" target="_blank">Khan Academy</a> — фундаментальні поняття з інформатики та математики.</li>
+<li><a href="https://www.w3schools.com" target="_blank">W3Schools</a> — швидкі приклади по HTML/CSS/JS.</li>
+<li><a href="https://www.codecademy.com" target="_blank">Codecademy</a> — інтерактивні курси з програмування.</li>
+<li><a href="https://scratch.mit.edu" target="_blank">Scratch</a> — візуальне програмування для молодших класів.</li>
+<li><a href="https://learningapps.org" target="_blank">LearningApps</a> — створення інтерактивних вправ.</li>
+<li><a href="https://classroom.google.com" target="_blank">Google Classroom</a> — організація класу та роздача завдань.</li>
+<li><a href="https://edu.google.com" target="_blank">Google for Education</a> — ресурси для вчителів.</li>
+<li><a href="https://www.freecodecamp.org" target="_blank">freeCodeCamp</a> — практичні задачі та сертифікації.</li>
+<li><a href="https://www.kodable.com" target="_blank">Kodable</a> — початкове програмування для дітей.</li>
+<li><a href="https://www.geogebra.org" target="_blank">GeoGebra</a> — математика для візуалізації задач.</li>
+<li><a href="https://github.com" target="_blank">GitHub</a> — зберігання коду та спільна робота.</li>
+<li><a href="https://www.coursera.org" target="_blank">Coursera</a> — курси від університетів.</li>
+<li><a href="https://www.edx.org" target="_blank">edX</a> — онлайн-курси та мікромастери.</li>
+<li><a href="https://www.tinkercad.com" target="_blank">Tinkercad</a> — прості 3D/електронні симуляції для проєктів.</li>
+<li><a href="https://www.canva.com" target="_blank">Canva</a> — дизайн презентацій та матеріалів.</li>
+</ul>
+<p class="small-note" style="margin-top:8px">Порада: використовуйте LearningApps та Google Forms для коротких самоперевірок на уроках.</p>
+</div>
+</section>
+<section data-section="" id="news">
+<h2 class="section-title reveal">Новини</h2>
+<div class="tile reveal">📅 <strong>2025-10-25</strong> — Контрольна з алгоритмів у 9-Б класі (тема: сортування).</div>
+<div class="tile reveal">📣 Початок підготовки до Всеукраїнської олімпіади — тренування по середах о 15:30.</div>
+</section>
+<section data-section="" id="contacts">
+<h2 class="section-title reveal">Контакти</h2>
+<div class="tile reveal">
 <style>
   .contact-link {
     color: white;
@@ -662,13 +706,10 @@
     transition: color 0.3s;
   }
 </style>
-
 <strong>Пошта:</strong>
-<span class="contact-link" onclick="copyToClipboard('kmetsanek@gmail.com', this)">kmetsanek@gmail.com</span><br>
-
+<span class="contact-link" onclick="copyToClipboard('kmetsanek@gmail.com', this)">kmetsanek@gmail.com</span><br/>
 <strong>Номер телефону:</strong>
 <span class="contact-link" onclick="copyToClipboard('+380934278774', this)">+380934278774</span>
-
 <script>
   function copyToClipboard(text, element) {
     navigator.clipboard.writeText(text).then(() => {
@@ -682,44 +723,37 @@
     });
   }
 </script>
-
-
-  </div>
-
-  <div class="tile reveal" style="margin-top:12px">
-    <h3>Форма зв'язку</h3>
-    <form id="contactForm">
-      <div class="form-row">
-        <input type="text" name="name" placeholder="Ім'я" required>
-        <input type="email" name="email" placeholder="E-mail" required>
-      </div>
-      <div style="margin-top:8px;">
-        <select name="topic" required>
-          <option value="">Тема повідомлення</option>
-          <option>Питання щодо завдання</option>
-          <option>Запит на консультацію</option>
-          <option>Інше</option>
-        </select>
-      </div>
-      <div style="margin-top:8px;">
-        <textarea name="message" placeholder="Текст повідомлення" required></textarea>
-      </div>
-      <div style="margin-top:10px; display:flex; gap:10px; align-items:center;">
-        <button class="btn btn-primary" type="submit">Надіслати</button>
-      </div>
-    </form>
-    <div id="formStatus" class="small-note" style="margin-top:8px"></div>
-  </div>
-
-  <div class="tile reveal" style="margin-top:12px">
-    <strong>QR-код  Classroom</strong>
-   <a href='https://me-qr.com' border='0' style='cursor:pointer;display:block'><img src='https://storage2.me-qr.com/qr/266622170.png?v=1761297386' alt='Create qr code for free'></a><a href='https://me-qr.com' border='0' style='cursor:default;display:none'>Create qr code for free</a>
-  </div>
+</div>
+<div class="tile reveal" style="margin-top:12px">
+<h3>Форма зв'язку</h3>
+<form id="contactForm">
+<div class="form-row">
+<input name="name" placeholder="Ім'я" required="" type="text"/>
+<input name="email" placeholder="E-mail" required="" type="email"/>
+</div>
+<div style="margin-top:8px;">
+<select name="topic" required="">
+<option value="">Тема повідомлення</option>
+<option>Питання щодо завдання</option>
+<option>Запит на консультацію</option>
+<option>Інше</option>
+</select>
+</div>
+<div style="margin-top:8px;">
+<textarea name="message" placeholder="Текст повідомлення" required=""></textarea>
+</div>
+<div style="margin-top:10px; display:flex; gap:10px; align-items:center;">
+<button class="btn btn-primary" type="submit">Надіслати</button>
+</div>
+</form>
+<div class="small-note" id="formStatus" style="margin-top:8px"></div>
+</div>
+<div class="tile reveal" style="margin-top:12px">
+<strong>QR-код  Classroom</strong>
+<a border="0" href="https://me-qr.com" style="cursor:pointer;display:block"><img alt="Create qr code for free" src="https://storage2.me-qr.com/qr/266622170.png?v=1761297386"/></a><a border="0" href="https://me-qr.com" style="cursor:default;display:none">Create qr code for free</a>
+</div>
 </section>
-
 </main>
-
-
 <footer style="
   display: flex; 
   justify-content: space-between; 
@@ -730,19 +764,16 @@
   border-top: 1px solid rgba(255,255,255,0.1);
   flex-wrap: wrap;
 ">
-  <div style="flex: 1; text-align: left;">
+<div style="flex: 1; text-align: left;">
     © Вчитель інформатики — Кметь Олександр
   </div>
-
-  <div style="flex: 1; text-align: center;">
-    <span id="current-year"></span> рік
+<div style="flex: 1; text-align: center;">
+<span id="current-year"></span> рік
   </div>
-
-  <div style="flex: 1; text-align: right;">
-    <span id="datetime"></span>
-  </div>
+<div style="flex: 1; text-align: right;">
+<span id="datetime"></span>
+</div>
 </footer>
-
 <script>
   function updateDateTime() {
     const now = new Date();
@@ -756,8 +787,6 @@
   updateDateTime();
   setInterval(updateDateTime, 1000);
 </script>
-
-
 <script>
 const drop = document.getElementById('classDrop');
 drop.addEventListener('click', e=>{ e.preventDefault(); drop.classList.toggle('open'); });
@@ -940,7 +969,23 @@ if (saveLocalBtn) {
 
 console.log('Local messages (contactMessages):', JSON.parse(localStorage.getItem('contactMessages')||'[]'));
 console.log('Local messages (studentMessages):', JSON.parse(localStorage.getItem('studentMessages')||'[]'));
-</script>
 
+
+/* === Перемикач теми === */
+const themeBtn = document.getElementById('theme-toggle');
+if(themeBtn){
+  themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    const mode = document.body.classList.contains('light-mode') ? 'light' : 'dark';
+    localStorage.setItem('theme', mode);
+  });
+
+  // apply stored theme
+  const savedTheme = localStorage.getItem('theme');
+  if(savedTheme === 'light'){
+    document.body.classList.add('light-mode');
+  }
+}
+</script>
 </body>
 </html>
