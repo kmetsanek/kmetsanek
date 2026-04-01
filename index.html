@@ -542,14 +542,23 @@
                 <a data-nav="" href="#students">Для учнів</a>
                 <a data-nav="" href="#parents">Для батьків</a>
                 <a data-nav="" href="#projects">Проєкти</a>
-                <div class="dropdown" id="practiceDrop">
-                    <a>Практика ▾</a>
-                    <div class="dropdown-content">
-                        <a data-nav href="#zssopractice">Практика в ЗЗСО</a>
-                        <a data-nav href="#empty1">Практика в ЗПО</a>
-                        <a data-nav href="#empty1">Практика в ЗФПО</a>
-                    </div>
-                </div>
+<div class="dropdown">
+    <a>Практика ▾</a>
+    <div class="dropdown-content">
+
+        <div class="dropdown nested">
+            <a href="#zssopractice">Практика в ЗССО ▸</a>
+            <div class="dropdown-content nested-content">
+                <a data-nav href="#materials5">Матеріали 5 клас</a>
+                <a data-nav href="#materials6">Матеріали 6 клас</a>
+            </div>
+        </div>
+
+        <a data-nav href="#empty1">Практика в ЗПО</a>
+        <a data-nav href="#empty1">Практика в ЗФПО</a>
+
+    </div>
+</div>
                 <a data-nav="" href="#resources">Ресурси</a>
                 <a data-nav="" href="#news">Новини</a>
                 <a data-nav="" href="#contacts">Контакти</a>
@@ -1060,26 +1069,7 @@
                 <!-- Відступ після тексту -->
                 <div style="height: 30px;"></div>
 
-                <!-- Блок матеріалів -->
-                <div class="reveal" style="text-align:center; margin-bottom: 40px;">
-
-                    <h2 class="section-title reveal">
-                        Матеріали (Календарні планування для 5-6 класів)
-                    </h2>
-
-                    <div style="margin-top: 15px;">
-                        <a class="btn btn-primary" target="_blank" href="https://drive.google.com/drive/folders/1QZSfLmRxAz43KJw8GYpxr5shTu5U15yc?usp=drive_link">
-                            5 клас
-                        </a>
-                        <a class="btn btn-primary" target="_blank" href="https://drive.google.com/drive/folders/1SIIo1at7smlU-5_eeMPAhOAWHi37Se7c?usp=drive_link">
-                            6 клас
-                        </a>
-                        <a class="btn btn-primary" target="_blank" href="https://drive.google.com/file/d/1v5VT5jI9hHNBhV9mJNkGmb9-pFyv4PCq/view?usp=sharing">
-                            Модельно-навчальна програма
-                        </a>
-                    </div>
-
-                </div>
+              
             </div>
             </div>
         </section>
@@ -1109,6 +1099,73 @@
                     <li><a href="https://www.canva.com" target="_blank">Canva</a> — дизайн презентацій та матеріалів.</li>
                 </ul>
                 <p class="small-note" style="margin-top:8px">Порада: використовуйте LearningApps та Google Forms для коротких самоперевірок на уроках.</p>
+            </div>
+        </section>
+                <section data-section id="materials5">
+            <h2 class="section-title reveal">Матеріали 5 клас</h2>
+
+            <div class="grid-2" style="align-items: center;">
+
+                <!-- фото -->
+                <div class="tile reveal" style="text-align:center;">
+                    <img src="https://i.ibb.co/SD5b1yr9/1.jpg"
+                         class="responsive"
+                         style="width: 220px;">
+                </div>
+
+                <!-- кнопки -->
+                <div class="tile reveal" style="display:flex; flex-direction:column; gap:10px;">
+
+                    <a class="btn btn-primary" target="_blank" href="https://docs.google.com/document/d/1z11prJfp214BCiSAr_x3QdEeWLXNw0ux/edit?usp=sharing&ouid=102935969810439934512&rtpof=true&sd=true">
+                        Календарне планування
+                    </a>
+
+                    <a class="btn btn-primary" target="_blank" href="https://docs.google.com/document/d/1d4EH05qsDp6Mg9xjF3rlWfSDtMY-lXq2/edit?usp=sharing&rtpof=true&sd=true">
+                        Навчальна програма
+                    </a>
+
+                    <a class="btn btn-primary" target="_blank" href="#empty1">
+                        Практичні роботи
+                    </a>
+                    <a class="btn btn-primary" target="_blank" href="#empty1">
+                        Практичні роботи
+                    </a>
+                </div>
+
+            </div>
+        </section>
+        <section data-section id="materials6">
+            <h2 class="section-title reveal">Матеріали 6 клас</h2>
+
+            <div class="grid-2" style="align-items: center;">
+
+                <!-- фото -->
+                <div class="tile reveal" style="text-align:center;">
+                    <img src="https://i.ibb.co/S7MrYxZk/6.jpg"
+                         class="responsive"
+                         style="width: 220px;">
+                </div>
+
+                <!-- кнопки -->
+                <div class="tile reveal" style="display:flex; flex-direction:column; gap:10px;">
+
+                    <a class="btn btn-primary" target="_blank" href="https://docs.google.com/document/d/16vdkPRGLtrKgZtqlqUUok3QBqUM0Wi6x/edit?usp=sharing&rtpof=true&sd=true">
+                        Календарне планування
+                    </a>
+
+                    <a class="btn btn-primary" target="_blank" href="https://docs.google.com/document/d/1EESqsz457GXfajjmlUTkD6ABXmh3_GnT/edit?usp=sharing&ouid=102935969810439934512&rtpof=true&sd=true">
+                        Навчальна програма
+                    </a>
+
+                    <a class="btn btn-primary" target="_blank" href="#empty1">
+                        Практичні роботи
+                    </a>
+                    <a class="btn btn-primary" target="_blank" href="#empty1">
+                        Практичні роботи
+                    </a>
+
+                </div>
+
             </div>
         </section>
         <section data-section="" id="news">
