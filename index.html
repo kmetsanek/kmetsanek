@@ -513,6 +513,37 @@
                     background: rgba(0,0,0,0.05);
                     color: #000;
                 }
+                /* === ВКЛАДЕНЕ МЕНЮ === */
+        .dropdown.nested {
+            position: relative;
+        }
+
+            .dropdown.nested > a {
+                display: block;
+            }
+
+            .dropdown.nested .nested-content {
+                position: absolute;
+                top: 0;
+                left: 100%;
+                background: rgba(15,23,36,0.95);
+                border-radius: 10px;
+                padding: 6px 0;
+                display: none;
+                flex-direction: column;
+                min-width: 180px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+            }
+
+            .dropdown.nested:hover .nested-content {
+                display: flex;
+            }
+
+            /* щоб не ламалась ширина */
+            .dropdown-content a,
+            .dropdown.nested > a {
+                white-space: nowrap;
+            }
     </style>
 </head>
 <body>
