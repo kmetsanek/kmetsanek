@@ -544,7 +544,8 @@
             .dropdown.nested > a {
                 white-space: nowrap;
             }
-/* === Календарно-тематичне планування === */
+
+        /* === Календарно-тематичне планування === */
         .ktp-toolbar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:16px 0; }
         .ktp-toolbar label { color:var(--muted); font-weight:700; }
         .ktp-toolbar input { flex:1; min-width:220px; }
@@ -574,7 +575,6 @@
           .ktp-table .ktp-topic { min-width:0; }
           .ktp-date input { border:0; color:#111; }
         }
-
     </style>
 </head>
 <body>
@@ -622,6 +622,7 @@
             <a href="#digitalcompetencies">Інформатика у ЗП(ПТ)О ▸</a>
             <div class="dropdown-content nested-content">
                 <a data-nav href="#digitalcompetencies">Інформатика у ЗП(ПТ)О</a>
+                <a data-nav href="#analytical-variative">Аналітична довідка</a>
                 <a data-nav href="#ktp">КТП</a>
             </div>
         </div>
@@ -1528,7 +1529,102 @@
         </ul>
     </div>
 </section>
-  <section data-section="" id="ktp">
+
+
+        <section data-section="" id="analytical-variative" class="av-page">
+          <style>
+            /* Окреме оформлення аналітичної довідки: простіше читати, не змінюючи інші сторінки */
+            #analytical-variative { --av-accent:#2563eb; --av-soft:#eff6ff; --av-ink:var(--text, #172033); --av-muted:var(--muted, #526078); }
+            #analytical-variative .av-intro { max-width:1000px; margin:0 auto 24px; padding:26px 28px; border:1px solid rgba(100,116,139,.22); border-left:5px solid var(--av-accent); border-radius:14px; background:var(--card, rgba(255,255,255,.04)); }
+            #analytical-variative .av-eyebrow { margin:0 0 8px; color:var(--av-accent); font-size:.82rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+            #analytical-variative .av-title { margin:0 0 14px; max-width:950px; font-size:clamp(1.55rem, 3vw, 2.2rem); line-height:1.25; text-align:left; }
+            #analytical-variative .av-lead { margin:0; color:var(--av-muted); font-size:1.04rem; line-height:1.8; text-align:left; }
+            #analytical-variative .av-section-heading { margin:30px 0 14px; font-size:1.35rem; line-height:1.35; }
+            #analytical-variative .av-flow { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin:16px 0 26px; }
+            #analytical-variative .av-flow-item { padding:16px; border:1px solid rgba(100,116,139,.22); border-radius:12px; background:var(--card, rgba(255,255,255,.035)); min-width:0; }
+            #analytical-variative .av-flow-num { display:flex; align-items:center; justify-content:center; width:34px; height:34px; margin-bottom:10px; border-radius:9px; background:var(--av-soft); color:#1d4ed8; font-weight:800; }
+            #analytical-variative .av-flow-item strong { display:block; margin-bottom:6px; line-height:1.4; }
+            #analytical-variative .av-flow-item span { display:block; color:var(--av-muted); font-size:.92rem; line-height:1.55; }
+            #analytical-variative .av-modules { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; align-items:stretch; }
+            #analytical-variative .av-module { overflow:hidden; border:1px solid rgba(100,116,139,.24); border-radius:14px; background:var(--card, rgba(255,255,255,.04)); box-shadow:0 4px 18px rgba(15,23,42,.045); }
+            #analytical-variative .av-module-head { padding:19px 21px 17px; border-bottom:1px solid rgba(100,116,139,.18); background:linear-gradient(110deg, rgba(37,99,235,.10), transparent 80%); }
+            #analytical-variative .av-module-label { display:block; margin-bottom:7px; color:var(--av-accent); font-size:.78rem; font-weight:800; letter-spacing:.07em; text-transform:uppercase; }
+            #analytical-variative .av-module h3 { margin:0; font-size:1.12rem; line-height:1.45; }
+            #analytical-variative .av-module-body { padding:19px 21px 21px; }
+            #analytical-variative .av-module p { margin:0 0 15px; line-height:1.75; text-align:left; }
+            #analytical-variative .av-module h4 { margin:20px 0 10px; font-size:.96rem; }
+            #analytical-variative .av-detail { margin:0; padding:0; list-style:none; }
+            #analytical-variative .av-detail li { margin:0 0 12px; padding-left:14px; border-left:3px solid rgba(37,99,235,.28); line-height:1.7; }
+            #analytical-variative .av-detail li:last-child { margin-bottom:0; }
+            #analytical-variative .av-detail strong { color:var(--av-ink); }
+            #analytical-variative .av-recommendation { margin-top:24px; padding:23px 25px; border-radius:14px; border:1px solid rgba(5,150,105,.25); background:rgba(16,185,129,.07); }
+            #analytical-variative .av-recommendation h3 { margin:0 0 10px; font-size:1.2rem; }
+            #analytical-variative .av-recommendation p { margin:0; line-height:1.8; text-align:left; }
+            #analytical-variative .av-note { margin-top:15px !important; padding:12px 14px; border-radius:8px; background:rgba(100,116,139,.09); font-size:.94rem; }
+            @media (max-width:850px) { #analytical-variative .av-flow { grid-template-columns:repeat(2,minmax(0,1fr)); } #analytical-variative .av-modules { grid-template-columns:1fr; } }
+            @media (max-width:520px) { #analytical-variative .av-intro { padding:20px 17px; } #analytical-variative .av-flow { grid-template-columns:1fr; } #analytical-variative .av-module-head, #analytical-variative .av-module-body { padding:17px; } #analytical-variative .av-recommendation { padding:19px 17px; } }
+            @media print { #analytical-variative .av-intro, #analytical-variative .av-module, #analytical-variative .av-recommendation { break-inside:avoid; box-shadow:none; } #analytical-variative .av-flow { grid-template-columns:repeat(4,1fr); } #analytical-variative .av-modules { grid-template-columns:repeat(2,1fr); } }
+          </style>
+
+          <div class="av-intro reveal">
+            <p class="av-eyebrow">Аналітична довідка · Варіативний компонент</p>
+            <h2 class="av-title">Інформатика для професії 5169 «Оператор ОРС ЦЗ»</h2>
+            <p class="av-lead"><strong>Мета варіативного компоненту:</strong> поглиблення базових цифрових навичок (ЗК 4, КК 4) та їх трансформація у прикладні інструменти для виконання безпосередніх професійних обов'язків (ПК 4.1, ПК 4.2) в умовах високого психоемоційного навантаження та дефіциту часу.</p>
+          </div>
+
+          <h2 class="av-section-heading">Схема інтеграції варіативних модулів</h2>
+          <p class="av-lead">Навчання вибудовується як послідовність взаємопов’язаних напрямів — від безпечної роботи з оперативною інформацією до її систематизації та швидкого використання в професійних цифрових системах.</p>
+          <div class="av-flow" aria-label="Послідовність варіативних модулів">
+            <div class="av-flow-item"><div class="av-flow-num">01</div><strong>Захист інформації</strong><span>Кібергігієна, безпечний обмін даними та протидія фішингу.</span></div>
+            <div class="av-flow-item"><div class="av-flow-num">02</div><strong>Опрацювання даних</strong><span>Бази даних, SQL-запити й автоматизація рутинних операцій.</span></div>
+            <div class="av-flow-item"><div class="av-flow-num">03</div><strong>Професійні системи</strong><span>Картографічні сервіси та навчальні диспетчерські інтерфейси.</span></div>
+            <div class="av-flow-item"><div class="av-flow-num">04</div><strong>Швидкий аналіз</strong><span>Пошук, структурування та стислий виклад нормативної інформації.</span></div>
+          </div>
+
+          <h2 class="av-section-heading">Зміст модулів та професійне значення</h2>
+          <div class="av-modules">
+            <article class="av-module reveal">
+              <div class="av-module-head"><span class="av-module-label">Модуль 1</span><h3>Кібергігієна та безпека оперативної інформації</h3></div>
+              <div class="av-module-body">
+                <p><strong>Зміст модуля.</strong> Захист службових даних від витоку, безпечний обмін інформацією каналами зв'язку, соціальна інженерія та протидія фішингу. Практичні заняття передбачають розв'язання ситуаційних кейсів та аудит безпеки робочого місця диспетчера.</p>
+                <h4>Узгодження з підготовкою</h4>
+                <ul class="av-detail"><li><strong>Стандарт:</strong> реалізує КК 4 (захист інформації, особистих та службових даних) та ПК 4.1 (обробка інформації, що надходить по лініях зв'язку).</li><li><strong>Професійне значення:</strong> оператори працюють із закритими каналами та персональними даними потерпілих. Уміння швидко оцінити ризики й перевірити безпеку робочого середовища важливе для безперебійної роботи пункту зв'язку.</li></ul>
+              </div>
+            </article>
+            <article class="av-module reveal">
+              <div class="av-module-head"><span class="av-module-label">Модуль 2</span><h3>Управління базами даних та обробка масивів інформації (SQL та макроси)</h3></div>
+              <div class="av-module-body">
+                <p><strong>Зміст модуля.</strong> Принципи побудови реляційних баз даних, створення базових SQL-запитів на вибірку даних, управління правами доступу та безпека баз даних. Розробка макросів у табличних процесорах для автоматизації рутинних операцій.</p>
+                <h4>Узгодження з підготовкою</h4>
+                <ul class="av-detail"><li><strong>Стандарт:</strong> відповідає ЗК 4 (використання програмного забезпечення для побудови баз даних і проєктування макросів) та ПК 4.2 (системи збору, збереження й аналізу інформації).</li><li><strong>Професійне значення:</strong> допомагає автоматизувати службову документацію пункту зв'язку, пришвидшити пошук даних про об'єкти підвищеної небезпеки та ефективніше працювати із системами оперативно-диспетчерського управління.</li></ul>
+              </div>
+            </article>
+            <article class="av-module reveal">
+              <div class="av-module-head"><span class="av-module-label">Модуль 3</span><h3>Інформаційні технології в системі управління силами цивільного захисту (СУСЗ ЦЗ)</h3></div>
+              <div class="av-module-body">
+                <p><strong>Зміст модуля.</strong> Робота з електронними планшетами та картографічними сервісами, ознайомлення з архітектурою й інтерфейсами автоматизованих робочих місць на навчальних або демонстраційних версіях диспетчерського програмного забезпечення. Алгоритми реєстрації та переадресації викликів.</p>
+                <h4>Узгодження з підготовкою</h4>
+                <ul class="av-detail"><li><strong>Стандарт:</strong> реалізує ПК 4.2 — використання в професійній діяльності системи управління силами та засобами цивільного захисту.</li><li><strong>Професійне значення:</strong> готує до роботи за пультом, поєднуючи навички користування обладнанням, зокрема планшетами, із координацією пожежно-рятувальних підрозділів.</li></ul>
+              </div>
+            </article>
+            <article class="av-module reveal">
+              <div class="av-module-head"><span class="av-module-label">Модуль 4</span><h3>Оптимізація роботи з інформацією за допомогою ШІ-інструментів та аналізу текстів</h3></div>
+              <div class="av-module-body">
+                <p><strong>Зміст модуля.</strong> Використання цифрових інструментів для структурування великих обсягів нормативної бази, створення коротких зведень, пошуку в інструкціях і планах взаємодії та синтезу інформації з різних джерел.</p>
+                <h4>Узгодження з підготовкою</h4>
+                <ul class="av-detail"><li><strong>Стандарт:</strong> розширює КК 1 (пошук і використання різних типів джерел інформації) та ЗК 4 (комп'ютерний переклад, інформаційно-пошукові системи).</li><li><strong>Професійне значення:</strong> допомагає швидше опрацьовувати інструкції та керівні документи, знаходити потрібні алгоритми дій в умовах надзвичайної ситуації.</li></ul>
+                <p class="av-note"><strong>Важливо:</strong> результати, отримані за допомогою ШІ-інструментів, потрібно перевіряти за офіційними інструкціями та нормативними документами. Вони не замінюють затверджені алгоритми дій.</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="av-recommendation reveal">
+            <h3>Рекомендації щодо впровадження</h3>
+            <p>Для ефективного засвоєння програми рекомендується будувати навчання на основі наскрізних професійних завдань. Наприклад, під час вивчення макросів здобувачі освіти створюють автоматизований журнал реєстрації викликів, а в межах модуля з кібергігієни налаштовують захист цього журналу від несанкціонованого доступу. Так знання з різних тем об’єднуються в єдиний практичний сценарій.</p>
+          </div>
+        </section>
+
+        <section data-section="" id="ktp">
           <h2 class="section-title reveal">Календарно-тематичне планування (КТП)</h2>
           <div class="tile reveal">
             <p class="text-block">Календарно-тематичне планування навчального курсу для підготовки оператора Оперативно-рятувальної служби цивільного захисту. Дати уроків можна вписати безпосередньо в таблицю.</p>
@@ -1640,7 +1736,6 @@
             <p class="small-note">Усього: 17 годин — 9 теоретичних і 8 практичних. Поле пошуку фільтрує теми таблиці.</p>
           </div>
         </section>
-
     </main>
     <footer style="
   display: flex;
@@ -1889,6 +1984,34 @@
         document.addEventListener('click', () => {
             document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
         });
+    </script>
+
+    <script>
+      (() => {
+        const search = document.getElementById('ktp-search');
+        const table = document.getElementById('ktp-table');
+        const printButton = document.getElementById('ktp-print');
+        if (search && table) {
+          search.addEventListener('input', () => {
+            const query = search.value.trim().toLocaleLowerCase('uk');
+            let showUnit = false;
+            const bodyRows = Array.from(table.tBodies[0].rows);
+            bodyRows.forEach(row => {
+              if (row.classList.contains('ktp-unit')) {
+                const nextTopic = row.nextElementSibling;
+                showUnit = !query || (nextTopic && nextTopic.textContent.toLocaleLowerCase('uk').includes(query));
+                row.hidden = !!query && !showUnit;
+              } else if (!row.classList.contains('ktp-total')) {
+                row.hidden = !!query && !row.textContent.toLocaleLowerCase('uk').includes(query);
+              }
+            });
+            const visibleTopics = bodyRows.some(row => !row.hidden && !row.classList.contains('ktp-unit') && !row.classList.contains('ktp-total'));
+            const total = table.querySelector('.ktp-total');
+            if (total) total.hidden = !!query;
+          });
+        }
+        if (printButton) printButton.addEventListener('click', () => window.print());
+      })();
     </script>
 </body>
 </html>
