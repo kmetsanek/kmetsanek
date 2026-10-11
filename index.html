@@ -544,6 +544,37 @@
             .dropdown.nested > a {
                 white-space: nowrap;
             }
+/* === Календарно-тематичне планування === */
+        .ktp-toolbar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:16px 0; }
+        .ktp-toolbar label { color:var(--muted); font-weight:700; }
+        .ktp-toolbar input { flex:1; min-width:220px; }
+        .ktp-table-wrap { width:100%; overflow-x:auto; border-radius:10px; }
+        .ktp-table { width:100%; min-width:850px; border-collapse:collapse; background:rgba(255,255,255,.02); color:var(--white); }
+        .ktp-table th,.ktp-table td { border:1px solid rgba(163,173,200,.28); padding:10px 12px; vertical-align:middle; }
+        .ktp-table thead th { background:linear-gradient(90deg,rgba(124,58,237,.32),rgba(6,182,212,.2)); color:var(--white); text-align:center; }
+        .ktp-table .ktp-unit th { background:rgba(124,58,237,.16); color:var(--white); text-align:left; }
+        .ktp-table .ktp-number,.ktp-table .ktp-hours { text-align:center; }
+        .ktp-table .ktp-topic { min-width:390px; }
+        .ktp-table .ktp-date { min-width:145px; }
+        .ktp-table .ktp-date input { min-width:120px; padding:7px; text-align:center; }
+        .ktp-table .ktp-total th { background:rgba(6,182,212,.15); font-weight:800; text-align:center; }
+        .light-mode .ktp-table { background:#fff; color:#111; }
+        .light-mode .ktp-table th,.light-mode .ktp-table td { border-color:rgba(0,0,0,.18); }
+        .light-mode .ktp-table thead th,.light-mode .ktp-table .ktp-unit th,.light-mode .ktp-table .ktp-total th { color:#111; }
+        @media print {
+          body { background:#fff !important; color:#111 !important; padding:0 !important; }
+          header, footer, #bg-anim, .ktp-toolbar, .small-note { display:none !important; }
+          main.container { max-width:none; padding:0; }
+          section#ktp { display:block !important; padding:0; }
+          section#ktp .tile { box-shadow:none; background:#fff; padding:0; }
+          section#ktp h2, section#ktp p { color:#111 !important; }
+          .ktp-table { min-width:0; font-size:10pt; color:#111; background:#fff; }
+          .ktp-table th,.ktp-table td { padding:5px; border:1px solid #777; }
+          .ktp-table-wrap { overflow:visible; }
+          .ktp-table .ktp-topic { min-width:0; }
+          .ktp-date input { border:0; color:#111; }
+        }
+
     </style>
 </head>
 <body>
@@ -587,7 +618,13 @@
 
         <a data-nav href="#empty1">Практика в ЗПО</a>
         <a data-nav href="#empty1">Практика в ЗФПО</a>
-	<a data-nav href="#digitalcompetencies">Інформатика у ЗП(ПТ)О</a>
+	        <div class="dropdown nested">
+            <a href="#digitalcompetencies">Інформатика у ЗП(ПТ)О ▸</a>
+            <div class="dropdown-content nested-content">
+                <a data-nav href="#digitalcompetencies">Інформатика у ЗП(ПТ)О</a>
+                <a data-nav href="#ktp">КТП</a>
+            </div>
+        </div>
 
 
     </div>
@@ -1491,6 +1528,119 @@
         </ul>
     </div>
 </section>
+  <section data-section="" id="ktp">
+          <h2 class="section-title reveal">Календарно-тематичне планування (КТП)</h2>
+          <div class="tile reveal">
+            <p class="text-block">Календарно-тематичне планування навчального курсу для підготовки оператора Оперативно-рятувальної служби цивільного захисту. Дати уроків можна вписати безпосередньо в таблицю.</p>
+            <div class="ktp-toolbar">
+              <label for="ktp-search">Пошук теми</label>
+              <input id="ktp-search" type="search" placeholder="Введіть назву теми…">
+              <button class="btn btn-primary" id="ktp-print" type="button">Друкувати / зберегти PDF</button>
+            </div>
+            <div class="ktp-table-wrap">
+              <table class="ktp-table" id="ktp-table">
+                <thead><tr><th>№</th><th>Дата уроку</th><th>Тема</th><th>Кількість годин</th><th>Теоретичні</th><th>Практичні</th></tr></thead>
+                <tbody><tr class="ktp-unit"><th colspan="6">Види, технічні характеристики інформаційно-комунікаційного устаткування</th></tr>
+<tr>
+      <td class="ktp-number">1</td>
+      <td class="ktp-date"><input type="text" aria-label="Дата уроку 1" placeholder="__.__.____"></td>
+      <td class="ktp-topic">Використання сервісів Google у професійній діяльності оператора Оперативно-рятувальної служби цивільного захисту</td>
+      <td class="ktp-hours">2</td><td class="ktp-hours">1</td><td class="ktp-hours">1</td>
+    </tr>
+<tr class="ktp-unit"><th colspan="6">Системне програмне забезпечення інформаційно-комунікаційного устаткування</th></tr>
+<tr>
+      <td class="ktp-number">2</td>
+      <td class="ktp-date"><input type="text" aria-label="Дата уроку 2" placeholder="__.__.____"></td>
+      <td class="ktp-topic">Використання інформаційно-комунікаційних технологій для виконання професійних завдань</td>
+      <td class="ktp-hours">1</td><td class="ktp-hours">1</td><td class="ktp-hours">0</td>
+    </tr>
+<tr class="ktp-unit"><th colspan="6">Порядок та способи доступу до всесвітньої мережі «Інтернет»</th></tr>
+<tr>
+      <td class="ktp-number">3</td>
+      <td class="ktp-date"><input type="text" aria-label="Дата уроку 3" placeholder="__.__.____"></td>
+      <td class="ktp-topic">Використання інформаційно-пошукових систем</td>
+      <td class="ktp-hours">1</td><td class="ktp-hours">0</td><td class="ktp-hours">1</td>
+    </tr>
+<tr>
+      <td class="ktp-number">4</td>
+      <td class="ktp-date"><input type="text" aria-label="Дата уроку 4" placeholder="__.__.____"></td>
+      <td class="ktp-topic">Кібербезпека та захист інформації</td>
+      <td class="ktp-hours">1</td><td class="ktp-hours">1</td><td class="ktp-hours">0</td>
+    </tr>
+<tr>
+      <td class="ktp-number">5</td>
+      <td class="ktp-date"><input type="text" aria-label="Дата уроку 5" placeholder="__.__.____"></td>
+      <td class="ktp-topic">Основні види браузерів та їх можливості</td>
+      <td class="ktp-hours">1</td><td class="ktp-hours">0</td><td class="ktp-hours">1</td>
+    </tr>
+<tr>
+      <td class="ktp-number">6</td>
+      <td class="ktp-date"><input type="text" aria-label="Дата уроку 6" placeholder="__.__.____"></td>
+      <td class="ktp-topic">Інтерфейс текстового процесора</td>
+      <td class="ktp-hours">1</td><td class="ktp-hours">1</td><td class="ktp-hours">0</td>
+    </tr>
+<tr>
+      <td class="ktp-number">7</td>
+      <td class="ktp-date"><input type="text" aria-label="Дата уроку 7" placeholder="__.__.____"></td>
+      <td class="ktp-topic">Основний порядок створення та редагування текстового документа</td>
+      <td class="ktp-hours">2</td><td class="ktp-hours">1</td><td class="ktp-hours">1</td>
+    </tr>
+<tr>
+      <td class="ktp-number">8</td>
+      <td class="ktp-date"><input type="text" aria-label="Дата уроку 8" placeholder="__.__.____"></td>
+      <td class="ktp-topic">Основи обробки табличної інформації</td>
+      <td class="ktp-hours">1</td><td class="ktp-hours">1</td><td class="ktp-hours">0</td>
+    </tr>
+<tr>
+      <td class="ktp-number">9</td>
+      <td class="ktp-date"><input type="text" aria-label="Дата уроку 9" placeholder="__.__.____"></td>
+      <td class="ktp-topic">Загальні відомості про табличні процесори, основні терміни та визначення</td>
+      <td class="ktp-hours">1</td><td class="ktp-hours">1</td><td class="ktp-hours">0</td>
+    </tr>
+<tr>
+      <td class="ktp-number">10</td>
+      <td class="ktp-date"><input type="text" aria-label="Дата уроку 10" placeholder="__.__.____"></td>
+      <td class="ktp-topic">Інтерфейс табличного процесора</td>
+      <td class="ktp-hours">1</td><td class="ktp-hours">0</td><td class="ktp-hours">1</td>
+    </tr>
+<tr>
+      <td class="ktp-number">11</td>
+      <td class="ktp-date"><input type="text" aria-label="Дата уроку 11" placeholder="__.__.____"></td>
+      <td class="ktp-topic">Основні типи, формування даних табличного процесора</td>
+      <td class="ktp-hours">1</td><td class="ktp-hours">0</td><td class="ktp-hours">1</td>
+    </tr>
+<tr>
+      <td class="ktp-number">12</td>
+      <td class="ktp-date"><input type="text" aria-label="Дата уроку 12" placeholder="__.__.____"></td>
+      <td class="ktp-topic">Створення та редагування ділової графіки електронної таблиці</td>
+      <td class="ktp-hours">1</td><td class="ktp-hours">0</td><td class="ktp-hours">1</td>
+    </tr>
+<tr>
+      <td class="ktp-number">13</td>
+      <td class="ktp-date"><input type="text" aria-label="Дата уроку 13" placeholder="__.__.____"></td>
+      <td class="ktp-topic">Користування електронною поштою та месенджерами</td>
+      <td class="ktp-hours">1</td><td class="ktp-hours">0</td><td class="ktp-hours">1</td>
+    </tr>
+<tr>
+      <td class="ktp-number">14</td>
+      <td class="ktp-date"><input type="text" aria-label="Дата уроку 14" placeholder="__.__.____"></td>
+      <td class="ktp-topic">Основні можливості та функціонал сервісу Google Документи</td>
+      <td class="ktp-hours">1</td><td class="ktp-hours">0</td><td class="ktp-hours">1</td>
+    </tr>
+<tr>
+      <td class="ktp-number">15</td>
+      <td class="ktp-date"><input type="text" aria-label="Дата уроку 15" placeholder="__.__.____"></td>
+      <td class="ktp-topic">Способи передачі інформації під час проведення аварійно-рятувальних та інших невідкладних робіт, гасіння пожеж, ліквідації наслідків надзвичайних ситуацій</td>
+      <td class="ktp-hours">2</td><td class="ktp-hours">1</td><td class="ktp-hours">1</td>
+    </tr>
+                  <tr class="ktp-total"><th colspan="3">Разом</th><th>17</th><th>9</th><th>8</th></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="small-note">Усього: 17 годин — 9 теоретичних і 8 практичних. Поле пошуку фільтрує теми таблиці.</p>
+          </div>
+        </section>
+
     </main>
     <footer style="
   display: flex;
