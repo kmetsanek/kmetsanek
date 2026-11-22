@@ -575,6 +575,79 @@
           .ktp-table .ktp-topic { min-width:0; }
           .ktp-date input { border:0; color:#111; }
         }
+        /* === Методична картка-довідник === */
+        .methodical-table-wrap {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 10px;
+            margin-top: 16px;
+        }
+
+        .methodical-table {
+            width: 100%;
+            min-width: 850px;
+            border-collapse: collapse;
+            color: var(--white);
+            background: rgba(255,255,255,0.02);
+        }
+
+        .methodical-table th,
+        .methodical-table td {
+            padding: 13px;
+            border: 1px solid rgba(163,173,200,0.25);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .methodical-table th {
+            text-align: center;
+            background: linear-gradient(
+                90deg,
+                rgba(124,58,237,0.25),
+                rgba(6,182,212,0.16)
+            );
+            font-weight: 800;
+        }
+
+        .methodical-table td:first-child {
+            text-align: center;
+            font-weight: 700;
+            width: 45px;
+        }
+
+        .methodical-table td:nth-child(1) {
+            width: 45px;
+        }
+
+        .methodical-table td:nth-child(2) {
+            min-width: 220px;
+        }
+
+        .methodical-table td:nth-child(3) {
+            min-width: 190px;
+        }
+
+        .methodical-table td:nth-child(4) {
+            min-width: 190px;
+        }
+
+        .methodical-table td:nth-child(5) {
+            min-width: 190px;
+        }
+
+        .light-mode .methodical-table {
+            color: #111;
+            background: #fff;
+        }
+
+        .light-mode .methodical-table th,
+        .light-mode .methodical-table td {
+            border-color: rgba(0,0,0,0.18);
+        }
+
+        .light-mode .methodical-table th {
+            color: #111;
+        }
     </style>
 </head>
 <body>
@@ -624,6 +697,7 @@
                 <a data-nav href="#digitalcompetencies">Інформатика у ЗП(ПТ)О</a>
                 <a data-nav href="#analytical-variative">Аналітична довідка</a>
                 <a data-nav href="#ktp">КТП</a>
+                <a data-nav href="#methodical-card">Методична картка</a>
             </div>
         </div>
 
@@ -1530,10 +1604,149 @@
     </div>
 </section>
 
+<section data-section="" id="methodical-card">
+
+    <h2 class="section-title reveal">
+        Методична картка-довідник
+    </h2>
+
+    <div class="tile reveal">
+        <h3>Інформатика у ЗП(ПТ)О</h3>
+
+        <p class="text-block" style="text-align:justify; margin-top:10px;">
+            Методична картка-довідник розроблена для організації
+            навчання інформатики здобувачів професійної освіти за
+            професією «Оператор Оперативно-рятувальної служби
+            цивільного захисту». У ній представлено рекомендовані
+            форми навчання, методи викладання та цифрові засоби,
+            які доцільно використовувати під час опрацювання
+            професійно орієнтованих тем.
+        </p>
+    </div>
+
+    <div class="tile reveal">
+
+        <h3>Методична картка-довідник</h3>
+
+        <p class="small-note">
+            Професія: Оператор Оперативно-рятувальної служби
+            цивільного захисту
+        </p>
+
+        <div class="methodical-table-wrap">
+
+            <table class="methodical-table">
+
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Тема з інформатики</th>
+                        <th>Оптимальна форма навчання</th>
+                        <th>Рекомендований метод</th>
+                        <th>Цифровий засіб / ПЗ</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>1.</td>
+                        <td>
+                            Використання сервісів Google у професійній
+                            діяльності оператора ОРС ЦЗ
+                        </td>
+                        <td>
+                            Комбінований урок (теорія + лабораторно-
+                            практична робота)
+                        </td>
+                        <td>
+                            Інструктивно-практичний метод,
+                            практична вправа
+                        </td>
+                        <td>
+                            Google Workspace (Google Диск,
+                            Google Документи, Google Форми)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>4.</td>
+                        <td>
+                            Кібербезпека та захист інформації
+                        </td>
+                        <td>
+                            Урок засвоєння нових знань з елементами
+                            тренінгу
+                        </td>
+                        <td>
+                            Кейс-метод (розбір фішингових атак),
+                            проблемно-пошуковий метод
+                        </td>
+                        <td>
+                            Інтерактивні тренажери з кібербезпеки,
+                            тести Wordwall / Kahoot
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>12.</td>
+                        <td>
+                            Створення та редагування ділової графіки
+                            електронної таблиці
+                        </td>
+                        <td>
+                            Лабораторно-практична робота
+                        </td>
+                        <td>
+                            Метод виробничих кейсів
+                            (візуалізація статистики викликів і НС)
+                        </td>
+                        <td>
+                            MS Excel / Google Таблиці
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>15.</td>
+                        <td>
+                            Способи передачі інформації під час
+                            проведення аварійно-рятувальних робіт,
+                            гасіння пожеж, ліквідації наслідків НС
+                        </td>
+                        <td>
+                            Інтегрований (бінарний) урок /
+                            урок-тренінг
+                        </td>
+                        <td>
+                            Ділова гра, кейс-метод
+                            (моделювання екстреного оповіщення)
+                        </td>
+                        <td>
+                            Захищені месенджери, електронна пошта,
+                            інтерактивні симулятори диспетчерського
+                            зв'язку
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <p class="small-note">
+            Методичні рекомендації спрямовані на формування
+            практичних цифрових компетентностей здобувачів освіти
+            з урахуванням специфіки майбутньої професійної діяльності.
+        </p>
+
+    </div>
+
+</section>
+
 
         <section data-section="" id="analytical-variative" class="av-page">
           <style>
-            /* Окреме оформлення аналітичної довідки: простіше читати, не змінюючи інші сторінки */
             #analytical-variative { --av-accent:#2563eb; --av-soft:#eff6ff; --av-ink:var(--text, #172033); --av-muted:var(--muted, #526078); }
             #analytical-variative .av-intro { max-width:1000px; margin:0 auto 24px; padding:26px 28px; border:1px solid rgba(100,116,139,.22); border-left:5px solid var(--av-accent); border-radius:14px; background:var(--card, rgba(255,255,255,.04)); }
             #analytical-variative .av-eyebrow { margin:0 0 8px; color:var(--av-accent); font-size:.82rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
